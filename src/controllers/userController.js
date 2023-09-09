@@ -10,7 +10,7 @@ const createUser = async function (req, res) {
     if (Object.keys(body).length == 0) {
       return res
         .status(400)
-        .send({ status: "false", message: "All fields are mandatory" });
+        .json({ status: "false", message: "All fields are mandatory" });
     }
 
     const checkMail = await UserModel.findOne({ email: body.email });
@@ -30,7 +30,7 @@ const createUser = async function (req, res) {
 
     res.status(201).json({ message: "success", data: userData });
   } catch (error) {
-    return res.status(500).send({ status: "false", message: error.message });
+    return res.status(500).json({ status: "false", message: error.message });
   }
 };
 
@@ -58,7 +58,7 @@ const loginUser = async function (req, res) {
       return res.status(400).json({ message: "enter valid password" });
     }
   } catch (error) {
-    return res.status(500).send({ status: "false", message: error.message });
+    return res.status(500).json({ status: "false", message: error.message });
   }
 };
 module.exports = { createUser, loginUser };

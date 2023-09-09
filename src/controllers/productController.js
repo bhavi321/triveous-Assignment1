@@ -9,13 +9,13 @@ const createProduct = async function (req, res) {
     if (Object.keys(body).length == 0) {
       return res
         .status(400)
-        .send({ status: "false", message: "All fields are mandatory" });
+        .json({ status: "false", message: "All fields are mandatory" });
     }
 
     if (!title)
       return res
         .status(400)
-        .send({ status: false, message: "title is mandotary" });
+        .json({ status: false, message: "title is mandotary" });
     let productData = await ProductModel.create(body);
     return res.status(201).json({ status: true, data: productData });
   } catch (error) {
