@@ -15,7 +15,7 @@ const createProduct = async function (req, res) {
     if (!title)
       return res
         .status(400)
-        .json({ status: false, message: "title is mandotary" });
+        .json({ status: false, message: "title is mandatory" });
     let productData = await ProductModel.create(body);
     return res.status(201).json({ status: true, data: productData });
   } catch (error) {

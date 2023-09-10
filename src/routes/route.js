@@ -1,22 +1,11 @@
 const express = require("express");
 const router = express.Router();
 
-const {
-  createCategory,
-  getCategories,
-} = require("../controllers/categoryController");
-const {
-  createProduct,
-  getProductsByCategoryId,
-  getProductByProductId,
-} = require("../controllers/productController");
+const {createCategory, getCategories,} = require("../controllers/categoryController");
+const {createProduct,getProductsByCategoryId,getProductByProductId,} = require("../controllers/productController");
 const { createUser, loginUser } = require("../controllers/userController");
-const {
-  createCart,
-  updateCartByParams,
-  getCartByParams,
-  deleteCartByParams
-} = require("../controllers/cartController");
+const {createCart,updateCartByParams,getCartByParams,deleteCartByParams} = require("../controllers/cartController");
+const {createOrder} = require("../controllers/orderController")
 const { authentication } = require("../middlewares/auth");
 
 //--------------------------Category--------------------------------
@@ -28,15 +17,18 @@ router.post("/product/create", createProduct);
 router.get("/products/:categoryId", getProductsByCategoryId);
 router.get("/product/:productId", getProductByProductId);
 
-//--------------------------User--------------------------------
+//--------------------------User----------------------------------
 router.post("/user/create", createUser);
 router.post("/user/login", loginUser);
 
-//--------------------------Cart--------------------------------
+//--------------------------Cart----------------------------------
 router.post("/cart/create/:userId", authentication, createCart);
 router.put("/cart/update/:userId", authentication, updateCartByParams);
-//router.get("/cart/get/:userId", authentication, getCartByParams);
-//router.delete("/cart/delete/:userId", authentication, deleteCartByParams);
+router.get("/cart/get/:userId",authentication,getCartByParams)
+router.delete("/cart/delete/:userId", authentication, deleteCartByParams);
+
+//-------------------------Order----------------------------------
+router.post("/order/create/:userId",authentication,createOrder) 
 
 router.all("/*", function (req, res) {
   return res
