@@ -4,7 +4,7 @@
 - Clone the GitHub Repository: git clone <repository_url>
 - Navigate to the Project Directory: cd <directory_> 
 - Install Dependencies: npm  install
-- Start the Server: from the triveous-Assignment1 direcory, run this command - nodemon src/index.js
+- Start the Server: from the triveous-Assignment1 directory, run this command - nodemon src/index.js
 
 ## BACKEND - Ecommerce APIs
 
