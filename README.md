@@ -2,16 +2,20 @@
 
 ## BACKEND - Ecommerce APIs
 
+**Libraries used:**
+**Express, mongoose, nodemon, jwt, bcrypt, joi**
 
 ## USER APIs
 
 ### POST user/register
 - Create a user document from request body.
 - Saved password in encrypted format. (used bcrypt)
+- Provide joi validation.
 
 ### POST user/login
 - Allow an user to login with their email and password.
 - On a successful login attempt return the userId and a JWT token contatining the userId, exp, iat.
+- Provide joi validation.
 
 
 ## CATEGORY APIs
