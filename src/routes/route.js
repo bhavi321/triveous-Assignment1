@@ -5,7 +5,7 @@ const {createCategory, getCategories,} = require("../controllers/categoryControl
 const {createProduct,getProductsByCategoryId,getProductByProductId,} = require("../controllers/productController");
 const { createUser, loginUser } = require("../controllers/userController");
 const {createCart,updateCartByParams,getCartByParams,deleteCartByParams} = require("../controllers/cartController");
-const {createOrder} = require("../controllers/orderController")
+const {createOrder,updateOrder} = require("../controllers/orderController")
 const { authentication } = require("../middlewares/auth");
 
 //--------------------------Category--------------------------------
@@ -29,11 +29,13 @@ router.delete("/cart/delete/:userId", authentication, deleteCartByParams);
 
 //-------------------------Order----------------------------------
 router.post("/order/create/:userId",authentication,createOrder) 
+router.put("/order/update/:userId",authentication,updateOrder)
+
 
 router.all("/*", function (req, res) {
   return res
     .status(400)
-    .send({ status: false, message: "invalid http request" });
+    .json({ status: false, message: "invalid http request" });
 });
 
 module.exports = router;
