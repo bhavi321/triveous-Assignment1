@@ -53,7 +53,7 @@ const loginUser = async function (req, res) {
       });
       return res
         .status(200)
-        .json({ message: "User login successful", data: token });
+        .json({ message: "User login successful", data: {userId : user._id, token : token} });
     } else {
       return res.status(400).json({ message: "enter valid password" });
     }
